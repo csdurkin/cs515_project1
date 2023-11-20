@@ -1,1 +1,15 @@
+Column: 1; Sum: 9.0
+Total sum of all columns: 9.0
 
+Column: One; Sum: 9.0
+Total sum of all columns: 9.0
+
+Column: 1; Sum: 9.0
+Column: 2; Sum: 18.0
+Total sum of all columns: 27.0
+
+Column: One; Sum: 9.0
+Column: 2; Sum: 18.0
+Total sum of all columns: 27.0
+
+CSV File is empty.
