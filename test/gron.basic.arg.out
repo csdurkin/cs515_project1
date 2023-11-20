@@ -1,1 +1,25 @@
+json.name = "Connor Durkin"
+json.age = "31"
+json.city = "Jersey City"
+json.is_student = "True"
+
+json.name = "Connor Durkin"
+json.age = "31"
+json.Address.City = "Jersey City"
+json.Address.State = "New Jersey"
+json.Address.Zip = "7307"
+json.isStudent = "True"
+
+json.Connor Durkin[0] = "31"
+json.Connor Durkin[1] = "Jersey City, NJ, 07307"
+json.Connor Durkin[2] = "Student"
+json.Jane Doe[0] = "25"
+json.Jane Doe[1] = "Hoboken, NJ, 07030"
+json.Jane Doe[2] = "Student"
+
+json.name = "None"
+json.address = "None"
+json.isStudent = "None"
+
+json: Empty JSON
 
