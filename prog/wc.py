@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import re
 
@@ -38,8 +40,6 @@ def wc(file_name, lines, flags):
 
         print(f'{lines_count}\t{words_count}\t{characters_count}\t{file_name}')
 
-    sys.exit(0)
-
 if __name__ == '__main__':
 
     try:  
@@ -55,13 +55,18 @@ if __name__ == '__main__':
                     flags.extend(arg[1:])
                     continue
                     
-                with open(arg, 'r') as file:
-                    
-                    files_dict[arg] = file.readlines()
+                try:
+                    with open(arg, 'r') as file:
+                        files_dict[arg] = file.readlines()
+
+                except FileNotFoundError:
+                    files_dict[''] = arg
             
             for file_name, lines in files_dict.items(): 
                 
                 wc(file_name, lines, flags)
+            
+            sys.exit(0)
 
         else: 
             
