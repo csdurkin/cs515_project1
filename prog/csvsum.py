@@ -95,4 +95,3 @@ if __name__ == '__main__':
         exc_type, exc_value, exc_traceback = sys.exc_info()
         print(f'Exception Error: {exc_type.__name__} - {exc_value}')
         sys.exit(1)
-
