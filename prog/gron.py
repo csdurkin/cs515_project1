@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import json
 
@@ -25,8 +27,12 @@ def gron(json_object, base_object):
 
     flattened_json_object = flatten(json_object)
 
-    for key, value in flattened_json_object.items():
-        print(f'{base_object}.{key} = "{value}"')
+    if not flattened_json_object:
+        print(f'{base_object}: Empty JSON')
+    
+    else: 
+        for key, value in flattened_json_object.items():
+            print(f'{base_object}.{key} = "{value}"')
 
 
 if __name__ == '__main__':
@@ -35,32 +41,50 @@ if __name__ == '__main__':
     
         if len(sys.argv) == 2:
             
-            file_name = sys.argv[1]
-
-            with open(file_name, 'r') as file:
-                json_object = json.load(file)
+            input_string = sys.argv[1]
             
-            gron(json_object, 'json')
+            if input_string[0] == '{' and input_string[-1] == '}':
+                json_object = json.loads(input_string)
+                gron(json_object, 'json')
+            
+            else:
+                file_name = input_string
+                with open(file_name, 'r') as file:
+                    json_object = json.load(file)
+                    gron(json_object, 'json')
 
         elif len(sys.argv) == 4:
             
             base_object = sys.argv[2]
-            file_name = sys.argv[-1]
+            input_string = sys.argv[-1]
 
-            with open(file_name, 'r') as file:
-                json_object = json.load(file)
-            
-            gron(json_object, base_object)
+            if input_string[0] == '{' and input_string[-1] == '}':
+                json_object = json.loads(input_string)
+                gron(json_object, base_object)
+
+            else:
+                file_name = input_string
+                with open(file_name, 'r') as file:
+                    json_object = json.load(file)
+                    gron(json_object, base_object)
 
         else: 
             
-            json_object = json.load(sys.stdin)
-            gron(json_object)
-
+            file_name = None
+            
+            json_input = ' '.join(sys.stdin.readlines())
+                        
+            if json_input:
+                json_object = json.loads(json_input)
+                gron(json_object, 'json')
+            
+            else:
+                print('Empty JSON input.')
+                
         sys.exit(0)
 
     except FileNotFoundError:
-        print(f"FileNotFoundError: The file '{file_name}' was not found.")
+        print(f'FileNotFoundError: The file "{file_name}" was not found.')
         sys.exit(1)
 
     except json.JSONDecodeError:
@@ -69,8 +93,4 @@ if __name__ == '__main__':
 
     except Exception as e:
         print(f'Error: {e}')
-        sys.exit(1)   
-
-    
-
-    
+        sys.exit(1)
