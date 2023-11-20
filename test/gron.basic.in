@@ -1,1 +1,31 @@
+{
+  "name": "Connor Durkin",
+  "age": 31,
+  "city": "Jersey City",
+  "is_student": true
+}
+===
+{
+  "name": "Connor Durkin",
+  "age": 31,
+  "Address": {
+    "City": "Jersey City",
+    "State": "New Jersey",
+    "Zip": 7307
+  },
+  "isStudent": true
+}
+===
+{
+  "Connor Durkin": ["31", "Jersey City, NJ, 07307", "Student"],
+  "Jane Doe": ["25", "Hoboken, NJ, 07030", "Student"]
+}
+===
+{
+  "name": null,
+  "address": null,
+  "isStudent": null
+}
+===
+{}
 
